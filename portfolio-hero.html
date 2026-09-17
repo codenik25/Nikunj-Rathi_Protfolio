@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nikunj Rathi | Computer Science Engineer</title>
+  <meta name="description" content="Cinematic Developer Portfolio Hero - Nikunj Rathi, Computer Science Engineer." />
+  
+  <!-- Modern Typography from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #050a14;
+      --accent-cyan: #3ec6ff;
+      --accent-purple: #8b7bff;
+      --text-primary: #ffffff;
+      --text-secondary: #8a99b3;
+      --border-cyan: rgba(62, 198, 255, 0.25);
+      
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-display: 'Space Grotesk', 'Sora', sans-serif;
+      --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: rgba(62, 198, 255, 0.3);
+      color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       HERO SCENE (Full-bleed cinematic background & expanding media)
+       ========================================================================== */
+    .hero-scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      user-select: none;
+      z-index: 5;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: url('./public/assets/workspace_bg.jpg'), url('./assets/workspace_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: contrast(1.08) brightness(0.95);
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 10, 20, 0.75);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .ambient-glow-cyan {
+      position: absolute;
+      top: 20%;
+      left: 30%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(62, 198, 255, 0.12) 0%, transparent 70%);
+      filter: blur(100px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .ambient-glow-purple {
+      position: absolute;
+      bottom: 25%;
+      right: 25%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(139, 123, 255, 0.14) 0%, transparent 70%);
+      filter: blur(100px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Top center tag */
+    .top-center-tag {
+      position: relative;
+      z-index: 10;
+      padding-top: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+    .tag-line {
+      width: clamp(2rem, 5vw, 5rem);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(62, 198, 255, 0.4));
+    }
+    .tag-line.rev {
+      background: linear-gradient(90deg, rgba(62, 198, 255, 0.4), transparent);
+    }
+    .tag-text {
+      font-size: clamp(12px, 1.1vw, 14px);
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .tag-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .tag-link:hover {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+      text-decoration-color: rgba(62, 198, 255, 0.6);
+      text-underline-offset: 4px;
+      transform: translateY(-2px);
+    }
+
+    /* Center Hero Typography */
+    .hero-center {
+      position: relative;
+      z-index: 10;
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.35rem;
+    }
+    .eyebrow-line {
+      width: 3.5rem;
+      height: 1px;
+      background: rgba(62, 198, 255, 0.4);
+    }
+    .eyebrow-text {
+      font-size: clamp(12px, 1.1vw, 13px);
+      color: var(--text-secondary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Main Name: NIKUNJ RATHI (Space Grotesk, font-weight: 700) */
+    .headline-container {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .crosshair-line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 105%;
+      max-width: 900px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(62, 198, 255, 0.35) 25%, rgba(62, 198, 255, 0.45) 50%, rgba(62, 198, 255, 0.35) 75%, transparent);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .name-nikunj {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10.5vw, 175px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 25%, #d0dcee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.45)) drop-shadow(0 6px 18px rgba(0, 0, 0, 0.9));
+      position: relative;
+      z-index: 2;
+    }
+
+    .name-rathi {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10.5vw, 175px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+      background: linear-gradient(90deg, #3ec6ff 0%, #68a5ff 45%, #8b7bff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 35px rgba(62, 198, 255, 0.55)) drop-shadow(0 0 60px rgba(139, 123, 255, 0.35));
+      position: relative;
+      z-index: 2;
+    }
+
+    /* COMPUTER SCIENCE ENGINEER (Manrope, 18-22px, font-weight: 600, reduced tracking) */
+    .subheading {
+      margin-top: 1rem;
+      font-family: var(--font-sans);
+      font-size: clamp(18px, 1.8vw, 22px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    /* Interactive Skill Keywords (Manrope 15-17px, font-weight 500, individual hover effects) */
+    .domains {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      font-family: var(--font-sans);
+      font-size: clamp(15px, 1.2vw, 17px);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #B8C2D1;
+    }
+    .domains span.dot {
+      color: rgba(62, 198, 255, 0.35);
+      font-weight: 700;
+      margin: 0 0.15rem;
+    }
+    .skill-keyword {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.4rem;
+      cursor: pointer;
+      color: #B8C2D1;
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 4px;
+    }
+    .skill-keyword .kw-icon {
+      display: inline-block;
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-right: 0;
+      transform: translateY(3px);
+      transition: all 0.25s ease-out;
+      font-size: 0.85em;
+    }
+    .skill-keyword:hover {
+      transform: translateY(-2px) scale(1.07);
+    }
+    .skill-keyword:hover .kw-icon {
+      width: 1.1em;
+      opacity: 1;
+      margin-right: 0.35rem;
+      transform: translateY(0);
+    }
+    .skill-keyword::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0.4rem;
+      right: 0.4rem;
+      height: 1.5px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 99px;
+    }
+    .skill-keyword:hover::after {
+      transform: scaleX(1);
+    }
+    .skill-keyword.kw-software:hover { color: #3ec6ff; text-shadow: 0 0 14px rgba(62, 198, 255, 0.6); }
+    .skill-keyword.kw-data:hover { color: #3b82f6; text-shadow: 0 0 14px rgba(59, 130, 246, 0.6); }
+    .skill-keyword.kw-aiml:hover { color: #8b7bff; text-shadow: 0 0 14px rgba(139, 123, 255, 0.6); }
+    .skill-keyword.kw-cyber:hover { color: #2dd4bf; text-shadow: 0 0 14px rgba(45, 212, 191, 0.6); }
+    .skill-keyword.kw-cloud:hover { color: #818cf8; text-shadow: 0 0 14px rgba(129, 140, 248, 0.6); }
+
+    /* Tooltip popup below keyword */
+    .skill-tooltip {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 6px;
+      background: rgba(5, 10, 20, 0.95);
+      border: 1px solid rgba(62, 198, 255, 0.25);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .skill-keyword:hover .skill-tooltip {
+      opacity: 1;
+    }
+    .tooltip-tag {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tooltip-techs {
+      font-size: 10px;
+      color: #cbd5e1;
+      font-weight: 500;
+    }
+
+    /* Bottom Explore Prompt */
+    .explore-cue {
+      position: relative;
+      z-index: 10;
+      padding-bottom: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .target-ring {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(62, 198, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(62, 198, 255, 0.25);
+      margin-bottom: 0.35rem;
+      transition: all 0.3s ease;
+    }
+    .explore-cue:hover .target-ring {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 25px rgba(62, 198, 255, 0.7);
+      transform: scale(1.1);
+    }
+    .target-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 8px var(--accent-cyan);
+    }
+    .cue-label {
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+    .explore-cue:hover .cue-label {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+      text-decoration-color: rgba(62, 198, 255, 0.7);
+      text-underline-offset: 4px;
+    }
+    .cue-sublabel {
+      font-size: clamp(11px, 0.9vw, 12px);
+      letter-spacing: 0.04em;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+    .cue-arrow {
+      margin-top: 0.25rem;
+      width: 14px;
+      height: 14px;
+      color: var(--accent-cyan);
+      animation: bounce-arrow 1.8s infinite;
+    }
+
+    @keyframes bounce-arrow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ==========================================================================
+       PERSISTENT UI LAYER (Fixed z-index: 30-50, NEVER clipped by hero)
+       ========================================================================== */
+    .persistent-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+    }
+
+    /* Top-Left: BUILD / ANALYZE / AUTOMATE (Manrope 16-19px, font-weight: 600) */
+    .top-left-brand {
+      position: absolute;
+      top: 1.75rem;
+      left: 3rem;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .brand-line {
+      width: 32px;
+      height: 1px;
+      background: rgba(62, 198, 255, 0.4);
+      margin-bottom: 0.6rem;
+    }
+    .brand-words {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      font-size: clamp(16px, 1.4vw, 19px);
+      font-weight: 600;
+    }
+    .word-build { color: #ffffff; }
+    .word-analyze { color: var(--accent-cyan); }
+    .word-automate { color: var(--accent-purple); }
+
+    /* Top-Right: TURN / IDEAS / INTO / IMPACT (Manrope 15-18px, font-weight: 600) */
+    .top-right-tagline {
+      position: absolute;
+      top: 1.75rem;
+      right: 3rem;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      line-height: 1.25;
+      letter-spacing: 0.04em;
+      font-size: clamp(15px, 1.3vw, 18px);
+      font-weight: 600;
+    }
+    .tag-white { color: #ffffff; }
+    .tag-cyan { color: var(--accent-cyan); }
+
+    /* Right Tag Stack: CODE / LEARN / BUILD / GROW (Manrope 11px) */
+    .right-mid-stack {
+      position: absolute;
+      top: 7rem;
+      right: 3rem;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .corner-tag-box {
+      position: relative;
+      padding: 0.6rem 0.8rem;
+      border-right: 2px solid rgba(62, 198, 255, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      text-align: right;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1.6;
+    }
+    .corner-tag-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 2px;
+      background: var(--accent-cyan);
+    }
+    .corner-tag-box::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      height: 2px;
+      background: var(--accent-cyan);
+    }
+
+    /* Left Nav: Vertically Centered (01–08) */
+    .left-nav-centered {
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 12rem;
+    }
+    .nav-rail {
+      position: relative;
+      padding-left: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+    }
+    .rail-vertical-line {
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      bottom: 6px;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .nav-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.2s ease;
+      outline: none;
+    }
+    .nav-btn:hover {
+      transform: translateX(4px);
+    }
+    .nav-dot-box {
+      position: absolute;
+      left: -20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 10px;
+      height: 10px;
+    }
+    .nav-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #475569;
+    }
+    .nav-btn.active .nav-dot {
+      width: 9px;
+      height: 9px;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan), 0 0 20px rgba(62, 198, 255, 0.6);
+    }
+    .nav-num {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    .nav-btn.active .nav-num {
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+    .nav-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    .nav-btn.active .nav-text {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(62, 198, 255, 0.7);
+    }
+
+    .nav-substack {
+      margin-top: 1.5rem;
+      margin-left: 0.2rem;
+      padding-left: 0.6rem;
+      border-left: 1px solid rgba(62, 198, 255, 0.3);
+      display: flex;
+      flex-direction: column;
+      font-size: 0.65rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.2em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .bottom-left-pinned {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 3rem;
+      pointer-events: auto;
+      border-left: 1px solid rgba(62, 198, 255, 0.3);
+      padding-left: 0.6rem;
+      font-size: 0.62rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.2em;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CONSOLE / TERMINAL (Fixed bottom-right, z-index: 50)
+       ========================================================================== */
+    .fixed-terminal-wrap {
+      position: fixed;
+      right: 32px;
+      bottom: 32px;
+      width: 420px;
+      max-width: calc(100vw - 32px);
+      z-index: 50;
+      pointer-events: auto;
+      font-family: var(--font-mono);
+    }
+
+    .terminal-card {
+      background: rgba(5, 10, 20, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-cyan);
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(62, 198, 255, 0.18);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
+      background: rgba(10, 16, 32, 0.9);
+      border-bottom: 1px solid rgba(62, 198, 255, 0.15);
+    }
+    .terminal-title {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+    .traffic-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dot-red { width: 9px; height: 9px; border-radius: 50%; background: #ff5f56; }
+    .dot-yellow { width: 9px; height: 9px; border-radius: 50%; background: #ffbd2e; }
+    .dot-green { width: 9px; height: 9px; border-radius: 50%; background: #27c93f; }
+
+    .terminal-body {
+      padding: 0.9rem 1rem;
+      max-height: 270px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      line-height: 1.5;
+    }
+    .term-muted { color: var(--text-secondary); }
+    .term-cyan { color: var(--accent-cyan); font-weight: 600; }
+    .term-success { color: #00ff88; }
+    .term-white { color: #ffffff; }
+
+    .chips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.3rem;
+      padding-top: 0.4rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .chip-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.25rem 0.5rem;
+      background: rgba(10, 20, 40, 0.6);
+      border: 1px solid rgba(62, 198, 255, 0.15);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: inherit;
+    }
+    .chip-btn:hover {
+      background: rgba(62, 198, 255, 0.15);
+      border-color: var(--accent-cyan);
+    }
+    .chip-name {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.68rem;
+    }
+    .chip-btn:hover .chip-name { color: #ffffff; }
+    .chip-desc {
+      color: var(--text-secondary);
+      font-size: 0.62rem;
+    }
+
+    .term-input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+    .term-prompt {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+    .term-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      flex: 1;
+      padding: 0;
+    }
+    .term-cursor {
+      display: inline-block;
+      width: 7px;
+      height: 13px;
+      background: var(--accent-cyan);
+      animation: blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink { to { visibility: hidden; } }
+
+    @media (max-width: 1024px) {
+      .right-mid-stack { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .top-left-brand, .top-right-tagline { top: 1rem; }
+      .top-left-brand { left: 1rem; }
+      .top-right-tagline { right: 1rem; }
+      .left-nav-centered, .bottom-left-pinned { display: none; }
+      .fixed-terminal-wrap { right: 16px; bottom: 16px; width: calc(100vw - 32px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================= -->
+  <!-- 1. HERO SCENE                                                           -->
+  <!-- ======================================================================= -->
+  <main class="hero-scene" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="ambient-glow-cyan"></div>
+    <div class="ambient-glow-purple"></div>
+
+    <!-- Top Center Geolocation -->
+    <div class="top-center-tag">
+      <div class="tag-line"></div>
+      <span class="tag-text">
+        <a href="https://www.google.com/maps/place/Jaipur,+Rajasthan" target="_blank" rel="noopener noreferrer" class="tag-link">JAIPUR, INDIA</a>
+        &nbsp;·&nbsp; CSE '27 &nbsp;·&nbsp;
+        <a href="https://www.google.com/maps/place/JECRC+University/@26.7823528,75.8770146,17z" target="_blank" rel="noopener noreferrer" class="tag-link">JECRC UNIVERSITY</a>
+      </span>
+      <div class="tag-line rev"></div>
+    </div>
+
+    <!-- Center Hero Typography -->
+    <div class="hero-center">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">01 &nbsp;/&nbsp; DIGITAL JOURNEY</span>
+        <div class="eyebrow-line"></div>
+      </div>
+
+      <div class="headline-container">
+        <div class="crosshair-line"></div>
+        <h1 class="name-nikunj">NIKUNJ</h1>
+        <h1 class="name-rathi">RATHI</h1>
+      </div>
+
+      <p class="subheading">COMPUTER SCIENCE ENGINEER</p>
+
+      <div class="domains">
+        <div class="skill-keyword kw-software">
+          <span class="kw-icon">&lt;/&gt;</span>
+          <span>Software</span>
+          <div class="skill-tooltip">
+            <span class="tooltip-tag" style="color: #3ec6ff;">SOFTWARE</span>
+            <span class="tooltip-techs">C++ · Python · React · TypeScript</span>
+          </div>
+        </div>
+        <span class="dot">·</span>
+        <div class="skill-keyword kw-data">
+          <span class="kw-icon">📊</span>
+          <span>Data Analytics</span>
+          <div class="skill-tooltip">
+            <span class="tooltip-tag" style="color: #3b82f6;">DATA ANALYTICS</span>
+            <span class="tooltip-techs">Python · SQL · Pandas · Power BI</span>
+          </div>
+        </div>
+        <span class="dot">·</span>
+        <div class="skill-keyword kw-aiml">
+          <span class="kw-icon">✨</span>
+          <span>AI / ML</span>
+          <div class="skill-tooltip">
+            <span class="tooltip-tag" style="color: #8b7bff;">AI / ML</span>
+            <span class="tooltip-techs">Python · Scikit-learn · Vertex AI</span>
+          </div>
+        </div>
+        <span class="dot">·</span>
+        <div class="skill-keyword kw-cyber">
+          <span class="kw-icon">🛡️</span>
+          <span>Cybersecurity</span>
+          <div class="skill-tooltip">
+            <span class="tooltip-tag" style="color: #2dd4bf;">CYBERSECURITY</span>
+            <span class="tooltip-techs">IAM · PAM · DLP · Azure</span>
+          </div>
+        </div>
+        <span class="dot">·</span>
+        <div class="skill-keyword kw-cloud">
+          <span class="kw-icon">☁️</span>
+          <span>Cloud</span>
+          <div class="skill-tooltip">
+            <span class="tooltip-tag" style="color: #818cf8;">CLOUD</span>
+            <span class="tooltip-techs">GCP · Azure · Cloud Storage</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Center Scroll Prompt -->
+    <button class="explore-cue" onclick="scrollToSection('about')" aria-label="Scroll down to explore">
+      <div class="target-ring">
+        <div class="target-dot"></div>
+      </div>
+      <span class="cue-label">EXPLORE THE JOURNEY</span>
+      <span class="cue-sublabel">BY SCROLLING DOWN</span>
+      <svg class="cue-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+    </button>
+  </main>
+
+  <!-- ======================================================================= -->
+  <!-- 2. PERSISTENT UI LAYER (Outside hero, fixed z-index: 40-50)             -->
+  <!-- ======================================================================= -->
+  <div class="persistent-layer">
+    <!-- Top-Left Editorial Keywords -->
+    <div class="top-left-brand">
+      <div class="brand-line"></div>
+      <div class="brand-words">
+        <span class="word-build">BUILD</span>
+        <span class="word-analyze">ANALYZE</span>
+        <span class="word-automate">AUTOMATE</span>
+      </div>
+    </div>
+
+    <!-- Top-Right Tagline -->
+    <div class="top-right-tagline">
+      <span class="tag-white">TURN</span>
+      <span class="tag-white">IDEAS</span>
+      <span class="tag-cyan">INTO</span>
+      <span class="tag-cyan">IMPACT</span>
+    </div>
+
+    <!-- Right Side Tag Stack -->
+    <div class="right-mid-stack">
+      <div class="corner-tag-box">
+        <span class="tag-white">CODE</span>
+        <span class="tag-cyan">LEARN</span>
+        <span class="tag-white">BUILD</span>
+        <span style="color: var(--accent-purple); font-weight: 700;">GROW</span>
+      </div>
+    </div>
+
+    <!-- Left Navigation (Vertically Centered 01–08) -->
+    <aside class="left-nav-centered" aria-label="Chapter Index Navigation">
+      <nav class="nav-rail">
+        <div class="rail-vertical-line"></div>
+
+        <button class="nav-btn active" onclick="scrollToSection('hero')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">01</span>
+          <span class="nav-text">HOME</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('about')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">02</span>
+          <span class="nav-text">ABOUT</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('skills')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">03</span>
+          <span class="nav-text">SKILLS</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('projects')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">04</span>
+          <span class="nav-text">PROJECTS</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('experience')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">05</span>
+          <span class="nav-text">EXPERIENCE</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('activity')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">06</span>
+          <span class="nav-text">ACTIVITY</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('contact')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">07</span>
+          <span class="nav-text">CONTACT</span>
+        </button>
+
+        <button class="nav-btn" onclick="scrollToSection('replay')">
+          <div class="nav-dot-box"><div class="nav-dot"></div></div>
+          <span class="nav-num">08</span>
+          <span class="nav-text">REPLAY</span>
+        </button>
+      </nav>
+
+      <div class="nav-substack">
+        <span>FOCUS</span>
+        <span>CREATE</span>
+        <span>SOLVE</span>
+        <span>REPEAT</span>
+      </div>
+    </aside>
+
+    <!-- Bottom-Left Stack -->
+    <div class="bottom-left-pinned">
+      <div>IDEAS</div>
+      <div>SKILLS</div>
+      <div>PROJECTS</div>
+      <div>PEOPLE</div>
+      <div style="color: #ffffff; font-weight: 700;">IMPACT</div>
+    </div>
+
+    <!-- Interactive Terminal (Fixed Bottom-Right, z-index: 50) -->
+    <aside class="fixed-terminal-wrap" aria-label="Interactive Developer Terminal">
+      <div class="terminal-card" id="terminal-card">
+        <div class="terminal-header">
+          <span class="terminal-title">nikunj@portfolio:~</span>
+          <div class="traffic-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+        </div>
+
+        <div class="terminal-body" id="term-body">
+          <div class="term-muted">Type 'help' to see available commands.</div>
+          <div class="term-cyan">&gt; help</div>
+          <div class="term-muted">available commands:</div>
+          <div class="term-white">about &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Learn about me</div>
+          <div class="term-cyan">skills &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– View my tech stack</div>
+          <div class="term-white">projects &nbsp;&nbsp;&nbsp;– Explore my work</div>
+          <div class="term-white">experience &nbsp;– See my journey</div>
+          <div class="term-white">activity &nbsp;&nbsp;&nbsp;– View activity telemetry</div>
+          <div class="term-white">contact &nbsp;&nbsp;&nbsp;&nbsp;– Get in touch</div>
+
+          <div class="chips-grid">
+            <button class="chip-btn" onclick="runCommand('projects')">
+              <span class="chip-name">projects</span>
+              <span class="chip-desc">Explore work</span>
+            </button>
+            <button class="chip-btn" onclick="runCommand('skills')">
+              <span class="chip-name">skills</span>
+              <span class="chip-desc">Tech stack</span>
+            </button>
+            <button class="chip-btn" onclick="runCommand('about')">
+              <span class="chip-name">about</span>
+              <span class="chip-desc">Biography</span>
+            </button>
+            <button class="chip-btn" onclick="runCommand('contact')">
+              <span class="chip-name">contact</span>
+              <span class="chip-desc">Connect</span>
+            </button>
+          </div>
+
+          <div id="term-history"></div>
+
+          <div class="term-input-row">
+            <span class="term-prompt">nikunj@portfolio:~$</span>
+            <input type="text" id="term-input" class="term-input" placeholder="type command..." autocomplete="off" spellcheck="false" />
+            <span class="term-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    function scrollToSection(id) {
+      if (id === 'hero' || id === 'replay') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        console.log('Jump to section:', id);
+      }
+    }
+
+    const termInput = document.getElementById('term-input');
+    const termHistory = document.getElementById('term-history');
+    const termBody = document.getElementById('term-body');
+
+    function runCommand(raw) {
+      const cmd = raw.trim().toLowerCase();
+      if (!cmd) return;
+
+      const userLine = document.createElement('div');
+      userLine.className = 'term-cyan';
+      userLine.textContent = `nikunj@portfolio:~$ ${raw}`;
+      termHistory.appendChild(userLine);
+
+      if (cmd === 'clear') {
+        termHistory.innerHTML = '';
+        termInput.value = '';
+        return;
+      }
+
+      const res = document.createElement('div');
+      res.className = 'term-muted';
+
+      switch (cmd) {
+        case 'help':
+          res.textContent = 'Commands: about, skills, projects, experience, activity, contact, clear';
+          break;
+        case 'projects':
+          res.className = 'term-success';
+          res.textContent = '> 04 projects indexed. Navigating...';
+          setTimeout(() => scrollToSection('projects'), 350);
+          break;
+        case 'skills':
+          res.className = 'term-success';
+          res.textContent = '> 24 technologies loaded. Navigating...';
+          setTimeout(() => scrollToSection('skills'), 350);
+          break;
+        case 'about':
+          res.className = 'term-success';
+          res.textContent = '> Biography verified. Navigating...';
+          setTimeout(() => scrollToSection('about'), 350);
+          break;
+        case 'experience':
+          res.className = 'term-success';
+          res.textContent = '> Timeline verified. Navigating...';
+          setTimeout(() => scrollToSection('experience'), 350);
+          break;
+        case 'contact':
+          res.className = 'term-success';
+          res.textContent = '> Transmission channel open. Navigating...';
+          setTimeout(() => scrollToSection('contact'), 350);
+          break;
+        default:
+          res.style.color = '#f87171';
+          res.textContent = `zsh: command not found: ${cmd}`;
+      }
+
+      termHistory.appendChild(res);
+      termInput.value = '';
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        runCommand(termInput.value);
+      }
+    });
+  </script>
+</body>
+</html>
