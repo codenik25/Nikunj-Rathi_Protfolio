@@ -18,6 +18,7 @@ export const ExperienceCommandCenter: React.FC = () => {
   const [selectedExperience, setSelectedExperience] = useState<ExperienceItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [isNavVisible, setIsNavVisible] = useState(false);
 
   const handleOpenExperience = (exp: ExperienceItem) => {
     setSelectedExperience(exp);
@@ -51,12 +52,12 @@ export const ExperienceCommandCenter: React.FC = () => {
         }
       });
 
-      tl.fromTo('.intro-label', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0)
-        .fromTo('.intro-where', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.15)
-        .fromTo('.intro-learned', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.28)
-        .fromTo('.intro-build', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.42)
-        .fromTo('.intro-dot', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 0.42)
-        .fromTo('.intro-desc', { opacity: 0 }, { opacity: 1, duration: 1 }, 0.6);
+      tl.fromTo('.intro-label', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0)
+        .fromTo('.intro-where', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.1)
+        .fromTo('.intro-learned', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.18)
+        .fromTo('.intro-build', { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.25)
+        .fromTo('.intro-dot', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: 'back.out(2)' }, 0.25)
+        .fromTo('.intro-desc', { opacity: 0 }, { opacity: 1, duration: 0.8 }, 0.35);
 
       // 3. SVG Path Drawing & Particle Scrub
       if (brightPathRef.current) {
@@ -102,9 +103,17 @@ export const ExperienceCommandCenter: React.FC = () => {
 
         // Entrance animation
         const q = gsap.utils.selector(node);
-        gsap.fromTo(q('.exp-year'), { opacity: 0 }, { opacity: 1, duration: 0.7, scrollTrigger: { trigger: node, start: 'top 80%' } });
-        gsap.fromTo(q('.exp-company'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.7, scrollTrigger: { trigger: node, start: 'top 80%' } });
-        gsap.fromTo(q('.exp-role'), { opacity: 0 }, { opacity: 1, duration: 0.7, delay: 0.2, scrollTrigger: { trigger: node, start: 'top 80%' } });
+        gsap.fromTo(q('.exp-year'), { opacity: 0 }, { opacity: 1, duration: 0.5, scrollTrigger: { trigger: node, start: 'top 80%' } });
+        gsap.fromTo(q('.exp-company'), { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, scrollTrigger: { trigger: node, start: 'top 80%' } });
+        gsap.fromTo(q('.exp-role'), { opacity: 0 }, { opacity: 1, duration: 0.5, delay: 0.1, scrollTrigger: { trigger: node, start: 'top 80%' } });
+      });
+
+      // Nav visibility
+      ScrollTrigger.create({
+        trigger: section,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onToggle: self => setIsNavVisible(self.isActive),
       });
 
     }, section);
@@ -157,7 +166,7 @@ export const ExperienceCommandCenter: React.FC = () => {
       </div>
 
       {/* Right-side Experience Timeline Nav */}
-      <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-50 pointer-events-none">
+      <div className={`hidden lg:flex fixed right-48 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-50 pointer-events-none transition-opacity duration-500 ${isNavVisible ? 'opacity-100' : 'opacity-0'}`}>
         {[0, 1, 2].map((index) => {
           const isActive = activeIndex === index;
           const isPast = activeIndex > index;
@@ -273,13 +282,14 @@ export const ExperienceCommandCenter: React.FC = () => {
             
             {/* 1. ADANI */}
             <div 
-              className={`journey-node-container absolute left-[65%] top-[15%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'adani' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 0 ? 'opacity-50' : 'opacity-100'}`}
+              className={`journey-node-container absolute left-[65%] top-[15%] z-10 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'adani' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 0 ? 'opacity-50' : 'opacity-100'}`}
+              style={{ transform: 'translate(-12px, -50%)' }}
               onMouseEnter={() => setHoveredExpId('adani')}
               onMouseLeave={() => setHoveredExpId(null)}
               onClick={() => handleOpenExperience(EXPERIENCES_DATA[0])}
             >
               <div className="relative flex items-center gap-8">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 0 ? 'bg-cyan-400/20 border-2 border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
+                <div className={`w-6 h-6 shrink-0 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 0 ? 'bg-cyan-400/20 border-2 border-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
                    <div className={`w-2 h-2 rounded-full transition-colors duration-700 ${activeIndex >= 0 ? 'bg-cyan-400' : 'bg-slate-500'}`} />
                    {activeIndex === 0 && <div className="absolute inset-0 border border-cyan-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>
@@ -293,13 +303,14 @@ export const ExperienceCommandCenter: React.FC = () => {
 
             {/* 2. JIC */}
             <div 
-              className={`journey-node-container absolute left-[25%] top-[50%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'jic' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 1 ? 'opacity-50' : 'opacity-100'}`}
+              className={`journey-node-container absolute right-[75%] top-[50%] z-10 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'jic' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 1 ? 'opacity-50' : 'opacity-100'}`}
+              style={{ transform: 'translate(12px, -50%)' }}
               onMouseEnter={() => setHoveredExpId('jic')}
               onMouseLeave={() => setHoveredExpId(null)}
               onClick={() => handleOpenExperience(EXPERIENCES_DATA[1])}
             >
               <div className="relative flex flex-row-reverse items-center gap-8 text-right">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 1 ? 'bg-violet-400/20 border-2 border-violet-400 shadow-[0_0_20px_rgba(167,139,250,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
+                <div className={`w-6 h-6 shrink-0 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 1 ? 'bg-violet-400/20 border-2 border-violet-400 shadow-[0_0_20px_rgba(167,139,250,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
                    <div className={`w-2 h-2 rounded-full transition-colors duration-700 ${activeIndex >= 1 ? 'bg-violet-400' : 'bg-slate-500'}`} />
                    {activeIndex === 1 && <div className="absolute inset-0 border border-violet-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>
@@ -313,13 +324,14 @@ export const ExperienceCommandCenter: React.FC = () => {
 
             {/* 3. TECHSAKSHAM */}
             <div 
-              className={`journey-node-container absolute left-[60%] top-[80%] -translate-x-1/2 -translate-y-1/2 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'techsaksham' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 2 ? 'opacity-50' : 'opacity-100'}`}
+              className={`journey-node-container absolute left-[60%] top-[80%] z-10 cursor-pointer group transition-all duration-700 ${hoveredExpId && hoveredExpId !== 'techsaksham' ? 'opacity-30' : 'opacity-100'} ${activeIndex < 2 ? 'opacity-50' : 'opacity-100'}`}
+              style={{ transform: 'translate(-12px, -50%)' }}
               onMouseEnter={() => setHoveredExpId('techsaksham')}
               onMouseLeave={() => setHoveredExpId(null)}
               onClick={() => handleOpenExperience(EXPERIENCES_DATA[2])}
             >
               <div className="relative flex items-center gap-8">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 2 ? 'bg-emerald-400/20 border-2 border-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
+                <div className={`w-6 h-6 shrink-0 rounded-full flex items-center justify-center z-10 transition-all duration-700 ${activeIndex >= 2 ? 'bg-emerald-400/20 border-2 border-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.4)] scale-110' : 'bg-white/5 border border-white/20'} group-hover:scale-125`}>
                    <div className={`w-2 h-2 rounded-full transition-colors duration-700 ${activeIndex >= 2 ? 'bg-emerald-400' : 'bg-slate-500'}`} />
                    {activeIndex === 2 && <div className="absolute inset-0 border border-emerald-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>

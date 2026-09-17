@@ -17,6 +17,7 @@ export const ProjectCommandCenter: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectCommandData | null>(null);
   const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
   const [activeProjectIndex, setActiveProjectIndex] = useState(0);
+  const [isNavVisible, setIsNavVisible] = useState(false);
 
   const handleOpenProject = (id: string) => {
     const proj = PROJECTS_DATA.find((p) => p.id === id);
@@ -48,8 +49,8 @@ export const ProjectCommandCenter: React.FC = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          stagger: 0.2,
+          duration: 0.7,
+          stagger: 0.1,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.section-header-container',
@@ -90,12 +91,12 @@ export const ProjectCommandCenter: React.FC = () => {
 
         // Module reveal
         gsap.fromTo(mod,
-          { opacity: 0, y: 100, scale: 0.97 },
+          { opacity: 0, y: 60, scale: 0.98 },
           {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 1.2,
+            duration: 0.8,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: mod,
@@ -103,6 +104,14 @@ export const ProjectCommandCenter: React.FC = () => {
             }
           }
         );
+      });
+
+      // Nav visibility
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: 'top 50%',
+        end: 'bottom 50%',
+        onToggle: self => setIsNavVisible(self.isActive),
       });
 
       return () => {
@@ -182,7 +191,7 @@ export const ProjectCommandCenter: React.FC = () => {
       </div>
 
       {/* Right-side Project Timeline */}
-      <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-50 pointer-events-none">
+      <div className={`hidden lg:flex fixed right-48 top-1/2 -translate-y-1/2 flex-col items-center gap-6 z-50 pointer-events-none transition-opacity duration-500 ${isNavVisible ? 'opacity-100' : 'opacity-0'}`}>
         {[0, 1, 2].map((index) => {
           const isActive = activeProjectIndex === index;
           return (

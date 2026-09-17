@@ -218,25 +218,40 @@ export const ContactTerminal: React.FC<ContactTerminalProps> = ({ onReplay }) =>
       </div>
 
       {/* FINAL INTERACTION: 08 // END OF JOURNEY + [ REPLAY EXPERIENCE ] */}
-      <div id="replay" className="w-full max-w-7xl mx-auto pt-24 mt-20 border-t border-white/5 flex flex-col items-center text-center font-mono select-none">
-        <div className="text-cyan-400 text-xs tracking-[0.3em] uppercase mb-3">
-          08 // END OF JOURNEY
-        </div>
-        <h3 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight uppercase mb-4">
-          BUILD. <span className="text-cyan-300">ANALYZE.</span> <span className="text-portfolio-secondary">AUTOMATE.</span>
-        </h3>
-        <p className="text-slate-500 text-xs tracking-widest uppercase mb-8">
-          NIKUNJ RATHI &copy; {new Date().getFullYear()} &bull; ENGINEERED FOR SCALE
-        </p>
+      <div id="replay" className="w-full max-w-7xl mx-auto pt-24 mt-20 border-t border-white/5 flex flex-col lg:flex-row items-center lg:items-end justify-between font-mono select-none gap-16">
+        
+        {/* Left Side: Text and Replay Button */}
+        <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="text-cyan-400 text-xs tracking-[0.3em] uppercase mb-3">
+            08 // END OF JOURNEY
+          </div>
+          <h3 className="font-display font-black text-3xl sm:text-5xl text-white tracking-tight uppercase mb-4">
+            BUILD. <span className="text-cyan-300">ANALYZE.</span> <span className="text-portfolio-secondary">AUTOMATE.</span>
+          </h3>
+          <p className="text-slate-500 text-xs tracking-widest uppercase mb-8">
+            NIKUNJ RATHI &copy; {new Date().getFullYear()} &bull; ENGINEERED FOR SCALE
+          </p>
 
-        <button
-          onClick={onReplay}
-          data-cursor="REPLAY"
-          className="flex items-center gap-2.5 px-6 py-3 rounded-full border border-cyan-400/50 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 font-bold text-xs tracking-widest transition-all shadow-cyan-glow cursor-pointer focus:outline-none hover:scale-105"
-        >
-          <span>[ REPLAY EXPERIENCE &uarr; ]</span>
-          <ArrowUp className="w-3.5 h-3.5" />
-        </button>
+          <button
+            onClick={onReplay}
+            data-cursor="REPLAY"
+            className="flex items-center gap-2.5 px-6 py-3 rounded-full border border-cyan-400/50 bg-cyan-950/40 hover:bg-cyan-900/60 text-cyan-300 font-bold text-xs tracking-widest transition-all shadow-cyan-glow cursor-pointer focus:outline-none hover:scale-105"
+          >
+            <span>[ REPLAY EXPERIENCE &uarr; ]</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Right Side: Profile Picture Circle */}
+        <div className="w-48 h-48 sm:w-56 sm:h-56 shrink-0 relative rounded-full border border-white/10 bg-[#080d19] overflow-hidden group shadow-[0_0_30px_rgba(34,211,238,0.05)]">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-600 font-mono text-[10px] tracking-[0.2em]">
+            <span>[ IMAGE ]</span>
+          </div>
+          {/* You can add your image tag here, for example: */}
+          {/* <img src="/nikunj.jpg" alt="Nikunj Rathi" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500" /> */}
+          <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/5 group-hover:ring-cyan-400/30 transition-all duration-700 pointer-events-none" />
+        </div>
+
       </div>
     </section>
   );

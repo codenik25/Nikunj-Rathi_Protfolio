@@ -193,13 +193,23 @@ export const HeroScene: React.FC<HeroSceneProps> = () => {
       const initialHeight = isMobile ? 160 : 220;
       const splitDistance = isMobile ? window.innerWidth * 0.65 : Math.max(window.innerWidth * 0.55, 600);
 
+      const calcInset = (w: number, h: number, radius: number) => {
+        const top = Math.max(0, (window.innerHeight - h) / 2);
+        const right = Math.max(0, (window.innerWidth - w) / 2);
+        const bottom = Math.max(0, (window.innerHeight - h) / 2);
+        const left = Math.max(0, (window.innerWidth - w) / 2);
+        return `inset(${top}px ${right}px ${bottom}px ${left}px round ${radius}px)`;
+      };
+
       // Initial setup
       gsap.set(mediaFrameRef.current, {
-        width: initialWidth,
-        height: initialHeight,
+        xPercent: -50,
+        yPercent: -50,
+        width: '100vw',
+        height: '100vh',
         opacity: 0,
         scale: 0.6,
-        borderRadius: 20,
+        clipPath: calcInset(initialWidth, initialHeight, 20),
         transformOrigin: 'center center',
       });
 
@@ -298,9 +308,11 @@ export const HeroScene: React.FC<HeroSceneProps> = () => {
         .to(
           mediaFrameRef.current,
           {
-            width: () => (isMobile ? window.innerWidth * 0.94 : window.innerWidth * 0.76),
-            height: () => (isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.64),
-            borderRadius: 16,
+            clipPath: () => {
+              const midW = isMobile ? window.innerWidth * 0.94 : window.innerWidth * 0.76;
+              const midH = isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.64;
+              return calcInset(midW, midH, 16);
+            },
             duration: 0.4,
             ease: 'power2.inOut',
           },
@@ -357,9 +369,7 @@ export const HeroScene: React.FC<HeroSceneProps> = () => {
         .to(
           mediaFrameRef.current,
           {
-            width: () => window.innerWidth,
-            height: () => window.innerHeight,
-            borderRadius: 0,
+            clipPath: () => calcInset(window.innerWidth, window.innerHeight, 0),
             duration: 0.22,
             ease: 'power2.inOut',
           },
@@ -521,11 +531,10 @@ export const HeroScene: React.FC<HeroSceneProps> = () => {
             <div
               id="hero-media-frame"
               ref={mediaFrameRef}
-              className="absolute z-10 overflow-hidden border border-[#3ec6ff]/40 shadow-2xl shadow-[#050a14]/90 bg-[#070b16] flex items-center justify-center will-change-[width,height,transform,opacity,border-radius]"
+              className="absolute z-10 overflow-hidden border border-[#3ec6ff]/40 bg-[#070b16] flex items-center justify-center will-change-transform"
               style={{
                 left: '50%',
                 top: '50%',
-                transform: 'translate(-50%, -50%)',
               }}
             >
               {/* Layer 1: Hero Workspace Media Photography */}

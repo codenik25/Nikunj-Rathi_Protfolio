@@ -47,13 +47,23 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
     const initialSmallHeight = isMobile ? 180 : 240;
     const splitDistance = isMobile ? window.innerWidth * 0.65 : Math.max(window.innerWidth * 0.52, 640);
 
+    const calcInset = (w: number, h: number, radius: number) => {
+      const top = Math.max(0, (window.innerHeight - h) / 2);
+      const right = Math.max(0, (window.innerWidth - w) / 2);
+      const bottom = Math.max(0, (window.innerHeight - h) / 2);
+      const left = Math.max(0, (window.innerWidth - w) / 2);
+      return `inset(${top}px ${right}px ${bottom}px ${left}px round ${radius}px)`;
+    };
+
     // Initial setup
     gsap.set(mediaFrame, {
-      width: initialSmallWidth,
-      height: initialSmallHeight,
+      xPercent: -50,
+      yPercent: -50,
+      width: '100vw',
+      height: '100vh',
       opacity: 0,
-      scale: 0.5,
-      borderRadius: 24,
+      scale: 0.8,
+      clipPath: calcInset(initialSmallWidth, initialSmallHeight, 24),
       transformOrigin: 'center center',
     });
 
@@ -72,7 +82,7 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
         trigger: container,
         start: 'top top',
         end: '+=2400',
-        scrub: 0.6,
+        scrub: 1,
         pin: true,
         pinSpacing: true,
         anticipatePin: 1,
@@ -157,9 +167,11 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
       .to(
         mediaFrame,
         {
-          width: () => (isMobile ? window.innerWidth * 0.94 : window.innerWidth * 0.74),
-          height: () => (isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.62),
-          borderRadius: 18,
+          clipPath: () => {
+            const midW = isMobile ? window.innerWidth * 0.94 : window.innerWidth * 0.74;
+            const midH = isMobile ? window.innerHeight * 0.65 : window.innerHeight * 0.62;
+            return calcInset(midW, midH, 18);
+          },
           duration: 0.4,
           ease: 'power2.inOut',
         },
@@ -216,9 +228,7 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
       .to(
         mediaFrame,
         {
-          width: () => window.innerWidth,
-          height: () => window.innerHeight,
-          borderRadius: 0,
+          clipPath: () => calcInset(window.innerWidth, window.innerHeight, 0),
           duration: 0.3,
           ease: 'power2.inOut',
         },
@@ -273,9 +283,9 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-[#05070b] via-[#05070b]/60 to-[#05070b]/80" />
           <div className="absolute inset-0 bg-radial-vignette opacity-80" />
 
-          {/* Subtle Ambient Glows from reference image */}
-          <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px]" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-portfolio-secondary/10 rounded-full blur-[120px]" />
+          {/* Subtle Ambient Glows from reference image (Optimized with radial gradients instead of heavy CSS blurs) */}
+          <div className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)' }} />
+          <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full" style={{ background: 'radial-gradient(circle, rgba(139,123,255,0.15) 0%, transparent 70%)' }} />
           <div className="absolute inset-0 scanline-overlay opacity-25" />
         </div>
 
@@ -372,11 +382,10 @@ export const ScrollExpansionHero: React.FC<ScrollExpansionHeroProps> = () => {
               id="hero-media-frame"
               ref={mediaFrameRef}
               data-cursor="EXPAND"
-              className="absolute z-10 overflow-hidden border border-cyan-400/50 shadow-2xl shadow-cyan-950/80 bg-[#070b16] flex items-center justify-center will-change-[width,height,transform,opacity,border-radius]"
+              className="absolute z-10 overflow-hidden border border-cyan-400/50 bg-[#070b16] flex items-center justify-center will-change-transform"
               style={{
                 left: '50%',
                 top: '50%',
-                transform: 'translate(-50%, -50%)',
               }}
             >
               {/* Workstation Media Visual */}
