@@ -78,7 +78,7 @@ export const ExperienceTerminal: React.FC<ExperienceTerminalProps> = ({
       const list = experiences
         .map(
           (exp) =>
-            `[${exp.number}] ${exp.year} • ${exp.role} (${exp.company}) — ${exp.classification}`
+            `[${exp.number}]  • ${exp.role} (${exp.company}) — ${exp.classification}`
         )
         .join('\n');
       setHistory((prev) => [

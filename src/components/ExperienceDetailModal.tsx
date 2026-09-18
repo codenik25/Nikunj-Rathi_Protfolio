@@ -76,8 +76,8 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
                 <span className="font-ibm text-xs text-cyan-300 uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-cyan-950/60 border border-cyan-500/30">
                   {experience.classification}
                 </span>
-                <span className="font-ibm text-xs text-slate-400">
-                  {experience.period}
+                <span className="font-ibm text-[13.5px] sm:text-[14px] text-slate-300 font-medium">
+                  {experience.date}
                 </span>
               </div>
               <h2

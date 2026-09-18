@@ -11,6 +11,7 @@ interface MagneticButtonProps {
   rel?: string;
   onClick?: (e: React.MouseEvent) => void;
   'data-cursor'?: string;
+  'aria-label'?: string;
 }
 
 export const MagneticButton: React.FC<MagneticButtonProps> = ({
@@ -23,6 +24,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
   rel,
   onClick,
   'data-cursor': dataCursor,
+  'aria-label': ariaLabel,
 }) => {
   const buttonRef = useRef<HTMLElement>(null);
 
@@ -86,6 +88,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       rel={rel}
       onClick={onClick}
       data-cursor={dataCursor}
+      aria-label={ariaLabel}
       className={`will-change-transform ${className}`}
     >
       {children}

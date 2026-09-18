@@ -163,12 +163,18 @@ export const ArchiveActivityField: React.FC = () => {
              ctx.fillStyle = `rgba(255, 255, 255, ${intensity * 0.1})`; // soft white
           }
           
-          // If we are actively hovering near it, give it a tiny border
+          // If we are actively hovering near it, give it a glowing border and subtle scale
           if (dist < 40) {
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
-            ctx.lineWidth = 1;
-            ctx.roundRect(x, y, cellSize, cellSize, 4);
+            ctx.save();
+            ctx.shadowColor = 'rgba(56, 189, 248, 0.6)';
+            ctx.shadowBlur = 10;
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.8)';
+            ctx.lineWidth = 1.5;
+            // Slightly scaled cell
+            const scaleOffset = 1.5;
+            ctx.roundRect(x - scaleOffset, y - scaleOffset, cellSize + scaleOffset * 2, cellSize + scaleOffset * 2, 5);
             ctx.stroke();
+            ctx.restore();
           }
 
           ctx.roundRect(x, y, cellSize, cellSize, 4);
@@ -190,26 +196,58 @@ export const ArchiveActivityField: React.FC = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full min-h-[400px] overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-[#050811] to-[#020308]">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 cursor-crosshair w-full h-full"
-        style={{ touchAction: 'none' }}
-      />
-      
-      {/* Portfolio Visualization Label */}
-      <div className="absolute bottom-6 right-6 font-mono text-[10px] text-slate-500 uppercase tracking-widest pointer-events-none">
-        Portfolio Activity Visualization
+    <div ref={containerRef} className="relative w-full h-full min-h-[420px] overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-[#070c18] via-[#050812] to-[#020408] shadow-2xl flex flex-col">
+      {/* Matrix Header Banner */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between px-6 py-4 border-b border-white/5 bg-[#080d1a]/80 backdrop-blur-md">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500" />
+          </span>
+          <span className="font-mono text-xs font-bold tracking-[0.2em] text-cyan-300 uppercase">
+            GITHUB CONTRIBUTIONS MATRIX
+          </span>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[11px] tracking-widest text-slate-400 uppercase font-semibold">
+            52-WEEK CONTINUOUS CYCLE
+          </span>
+          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-white/20" />
+          <span className="hidden sm:inline-block font-mono text-[10px] text-slate-500 uppercase tracking-widest">
+            ACTIVE PIPELINE
+          </span>
+        </div>
+      </div>
+
+      {/* Canvas Area */}
+      <div className="relative flex-1 w-full min-h-[340px]">
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 cursor-crosshair w-full h-full"
+          style={{ touchAction: 'none' }}
+        />
+        
+        {/* Minimal Bottom Legend */}
+        <div className="absolute bottom-4 right-6 font-mono text-[11px] text-slate-400 flex items-center gap-2 pointer-events-none bg-[#050914]/80 px-3 py-1.5 rounded-full border border-white/5 backdrop-blur-sm">
+          <span className="text-slate-500">Less</span>
+          <span className="w-2.5 h-2.5 rounded-sm bg-white/10" />
+          <span className="w-2.5 h-2.5 rounded-sm bg-sky-500/40" />
+          <span className="w-2.5 h-2.5 rounded-sm bg-purple-500/60" />
+          <span className="text-slate-500">More</span>
+        </div>
       </div>
 
       {/* Tooltip */}
       {tooltip && (
         <div 
-          className="fixed z-50 pointer-events-none px-3 py-2 bg-[#0a0f1a] border border-white/10 rounded shadow-xl transform -translate-x-1/2 -translate-y-full"
-          style={{ left: tooltip.x, top: tooltip.y }}
+          className="fixed z-50 pointer-events-none px-4 py-2.5 bg-[#0a1224]/95 border border-cyan-400/40 rounded-xl shadow-[0_12px_35px_rgba(0,0,0,0.85)] backdrop-blur-md transform -translate-x-1/2 -translate-y-full transition-all duration-75"
+          style={{ left: tooltip.x, top: tooltip.y - 12 }}
         >
-          <div className="text-white text-xs font-bold mb-0.5">{tooltip.text}</div>
-          <div className="text-slate-400 text-[10px] font-mono">{tooltip.subtext}</div>
+          <div className="text-white text-sm font-bold tracking-tight mb-0.5 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-cyan-400" />
+            <span>{tooltip.text}</span>
+          </div>
+          <div className="text-cyan-300/80 text-xs font-mono tracking-wider font-semibold">{tooltip.subtext}</div>
         </div>
       )}
     </div>

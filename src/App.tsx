@@ -10,6 +10,7 @@ import { SkillConstellation } from './components/SkillConstellation';
 import { ProjectCommandCenter } from './components/ProjectCommandCenter';
 import { ExperienceCommandCenter } from './components/ExperienceCommandCenter';
 import { CodingActivity } from './components/CodingActivity';
+import { CredentialArchive } from './components/CredentialArchive';
 import { ContactTerminal } from './components/ContactTerminal';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,9 +21,9 @@ const CHAPTERS = [
   { id: 'skills', num: '03', label: 'SKILLS' },
   { id: 'projects', num: '04', label: 'PROJECTS' },
   { id: 'experience', num: '05', label: 'EXPERIENCE' },
-  { id: 'activity', num: '06', label: 'ACTIVITY' },
-  { id: 'contact', num: '07', label: 'CONTACT' },
-  { id: 'replay', num: '08', label: 'REPLAY' },
+  { id: 'activity', num: '06', label: 'CODING' },
+  { id: 'credentials', num: '07', label: 'CREDENTIALS' },
+  { id: 'contact', num: '08', label: 'CONTACT' },
 ];
 
 function App() {
@@ -151,10 +152,13 @@ function App() {
         {/* CHAPTER 05: Experience & Engineering Journey Command Center */}
         <ExperienceCommandCenter />
 
-        {/* CHAPTER 06: Coding Activity & Telemetry Heatmap */}
+        {/* CHAPTER 06: Coding Velocity & Telemetry Activity */}
         <CodingActivity />
 
-        {/* CHAPTER 07 & 08: Contact Terminal, Transmission Relay & Replay Journey */}
+        {/* CHAPTER 07: Engineering Credential Archive */}
+        <CredentialArchive />
+
+        {/* CHAPTER 08: Contact Terminal, Transmission Relay & Replay Journey */}
         <ContactTerminal onReplay={handleReplay} />
       </main>
     </div>

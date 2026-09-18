@@ -294,7 +294,7 @@ export const ExperienceCommandCenter: React.FC = () => {
                    {activeIndex === 0 && <div className="absolute inset-0 border border-cyan-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>
                 <div className="flex flex-col group-hover:translate-x-4 transition-transform duration-500">
-                  <span className="exp-year font-sans text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">2026</span>
+                  <span className="exp-year font-sans text-[14px] sm:text-[15px] font-semibold tracking-wider text-slate-200 mb-1">{EXPERIENCES_DATA[0].date}</span>
                   <span className={`exp-company font-display text-5xl font-bold mb-2 transition-colors duration-700 ${activeIndex >= 0 ? 'text-white' : 'text-slate-500'} group-hover:text-cyan-400`}>ADANI</span>
                   <span className="exp-role font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-full border border-cyan-400/20 self-start">CYBERSECURITY INTERN</span>
                 </div>
@@ -315,7 +315,7 @@ export const ExperienceCommandCenter: React.FC = () => {
                    {activeIndex === 1 && <div className="absolute inset-0 border border-violet-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>
                 <div className="flex flex-col group-hover:-translate-x-4 transition-transform duration-500 items-end">
-                  <span className="exp-year font-sans text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">2025</span>
+                  <span className="exp-year font-sans text-[14px] sm:text-[15px] font-semibold tracking-wider text-slate-200 mb-1">{EXPERIENCES_DATA[1].date}</span>
                   <span className={`exp-company font-display text-5xl font-bold mb-2 transition-colors duration-700 ${activeIndex >= 1 ? 'text-white' : 'text-slate-500'} group-hover:text-violet-400`}>JIC</span>
                   <span className="exp-role font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-violet-400 bg-violet-400/10 px-3 py-1 rounded-full border border-violet-400/20">CORE TEAM</span>
                 </div>
@@ -336,7 +336,7 @@ export const ExperienceCommandCenter: React.FC = () => {
                    {activeIndex === 2 && <div className="absolute inset-0 border border-emerald-400 rounded-full" style={{ animation: 'ring-pulse 2s ease-out infinite' }} />}
                 </div>
                 <div className="flex flex-col group-hover:translate-x-4 transition-transform duration-500">
-                  <span className="exp-year font-sans text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">2024–25</span>
+                  <span className="exp-year font-sans text-[14px] sm:text-[15px] font-semibold tracking-wider text-slate-200 mb-1">{EXPERIENCES_DATA[2].date}</span>
                   <span className={`exp-company font-display text-5xl font-bold mb-2 transition-colors duration-700 ${activeIndex >= 2 ? 'text-white' : 'text-slate-500'} group-hover:text-emerald-400`}>TECHSAKSHAM</span>
                   <span className="exp-role font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-400 bg-emerald-400/10 px-3 py-1 rounded-full border border-emerald-400/20 self-start">AI LEARNING</span>
                 </div>

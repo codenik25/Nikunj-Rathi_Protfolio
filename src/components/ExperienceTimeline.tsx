@@ -124,8 +124,8 @@ export const ExperienceTimeline: React.FC = () => {
                   }`}
                 >
                   {/* Commit hash and year pill */}
-                  <div className="flex items-center justify-between font-mono text-xs mb-3 border-b border-white/5 pb-2">
-                    <span className="text-cyan-400 font-bold tracking-wider">{exp.year}</span>
+                  <div className="flex items-center justify-between font-mono mb-3 border-b border-white/5 pb-2">
+                    <span className="text-cyan-400 font-bold tracking-wider text-[14px]">{exp.date}</span>
                     <span className="text-slate-500 text-[10px]">commit #{exp.id.slice(0, 7)}</span>
                   </div>
 

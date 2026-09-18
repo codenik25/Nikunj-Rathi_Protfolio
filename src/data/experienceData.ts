@@ -23,8 +23,7 @@ export interface ExperienceItem {
   id: string;
   commandName: string;
   number: string;
-  year: string;
-  period: string;
+  date: string;
   role: string;
   company: string;
   classification: 'Cybersecurity Internship' | 'Leadership / Core Team' | 'AI Learning Initiative' | 'C++ Virtual Internship' | 'Systems & Product Engineering';
@@ -44,12 +43,11 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     id: 'adani',
     commandName: 'adani',
     number: '01',
-    year: '2026',
-    period: '2026 — Present',
+    date: 'June 2025 \u2013 August 2025',
     role: 'Cybersecurity Intern',
     company: 'Adani Enterprises',
     classification: 'Cybersecurity Internship',
-    categoryBadge: 'SECURITY • AUTOMATION • CLOUD',
+    categoryBadge: 'SECURITY \u2022 AUTOMATION \u2022 CLOUD',
     summary: 'Security automation, Power BI analytical dashboards, Azure cloud governance, PAM, DLP, IAM access engineering, and real-time security monitoring.',
     overview:
       'Engineered automated security monitoring workflows and visual analytics at Adani Enterprises. Focused on modern Identity & Access Management (IAM), Privileged Access Management (PAM), Data Loss Prevention (DLP) policies, and enterprise Azure cloud security telemetry, visualizing threat postures through integrated Power BI executive dashboards.',
@@ -108,12 +106,11 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     id: 'jic',
     commandName: 'jic',
     number: '02',
-    year: '2025',
-    period: '2025',
+    date: '2023 \u2013 2024',
     role: 'JIC Core Team',
     company: 'JECRC Incubation Centre',
     classification: 'Leadership / Core Team',
-    categoryBadge: 'STARTUP ECOSYSTEM • LEADERSHIP',
+    categoryBadge: 'STARTUP ECOSYSTEM \u2022 LEADERSHIP',
     summary: 'Driving technology initiatives, startup incubation support, hackathon coordination, technical workshops, and social media/content outreach.',
     overview:
       'Served as a core student leader at JECRC Incubation Centre (JIC), fostering startup creation, technical innovation, and entrepreneurial culture. Managed technical activities, facilitated hackathons and founder bootcamps, supported early-stage startup founders with product development advice, and led digital ecosystem communication.',
@@ -164,12 +161,11 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     id: 'techsaksham',
     commandName: 'techsaksham',
     number: '03',
-    year: '2024–2025',
-    period: '2024 — 2025',
-    role: 'AI Learning Program',
+    date: 'March 2024',
+            role: 'AI Learning Program',
     company: 'TechSaksham (Microsoft & SAP CSR)',
     classification: 'AI Learning Initiative',
-    categoryBadge: 'ARTIFICIAL INTELLIGENCE • LEARNING',
+    categoryBadge: 'ARTIFICIAL INTELLIGENCE \u2022 LEARNING',
     summary: 'Joint educational initiative by Microsoft and SAP focused on core AI concepts, Machine Learning models, cloud intelligence, and hands-on practical applications.',
     overview:
       'Participated in the prestigious TechSaksham program, a joint CSR initiative by Microsoft and SAP designed to empower engineering students with cutting-edge industry skills. Completed intensive training covering Artificial Intelligence foundations, supervised and unsupervised machine learning algorithms, natural language processing, computer vision, and real-world technology applications.',
@@ -217,4 +213,5 @@ export const EXPERIENCES_DATA: ExperienceItem[] = [
     visualizerType: 'techsaksham_ai',
   },
 ];
+
 

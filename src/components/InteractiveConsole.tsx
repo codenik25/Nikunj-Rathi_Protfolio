@@ -72,7 +72,8 @@ export const InteractiveConsole: React.FC<InteractiveConsoleProps> = ({
               { text: '  skills       – interactive tech ecosystem', color: '#3ec6ff' },
               { text: '  projects     – full production gallery', color: '#cbd5e1' },
               { text: '  experience   – career timeline & milestones', color: '#cbd5e1' },
-              { text: '  activity     – telemetry & commit heatmaps', color: '#cbd5e1' },
+              { text: '  coding       – coding velocity & telemetry matrix', color: '#cbd5e1' },
+              { text: '  credentials  – verified certifications archive', color: '#cbd5e1' },
               { text: '  contact      – transmission relay & direct channels', color: '#cbd5e1' },
               { text: '  clear        – clear terminal buffer', color: '#8a99b3' },
             ]);
@@ -120,7 +121,8 @@ export const InteractiveConsole: React.FC<InteractiveConsoleProps> = ({
         { text: '  skills       – interactive tech ecosystem', color: '#3ec6ff' },
         { text: '  projects     – full production gallery', color: '#cbd5e1' },
         { text: '  experience   – career timeline & milestones', color: '#cbd5e1' },
-        { text: '  activity     – telemetry & commit heatmaps', color: '#cbd5e1' },
+        { text: '  coding       – coding velocity & telemetry matrix', color: '#cbd5e1' },
+        { text: '  credentials  – verified certifications archive', color: '#cbd5e1' },
         { text: '  contact      – transmission relay & direct channels', color: '#cbd5e1' },
         { text: '  clear        – clear terminal buffer', color: '#8a99b3' },
       ]);
@@ -186,15 +188,32 @@ export const InteractiveConsole: React.FC<InteractiveConsoleProps> = ({
         break;
 
       case 'activity':
+      case 'coding':
+      case 'velocity':
         setHistory((prev) => [
           ...prev,
           { text: '> streaming telemetry & commit heatmaps...', color: '#8a99b3' },
-          { text: '> 98.4% pipeline uptime confirmed', color: '#3ec6ff' },
-          { text: '> Navigating to Activity...', color: '#00ff88' },
+          { text: '> 148+ LeetCode DSA · C++ Core · 52-week activity matrix', color: '#3ec6ff' },
+          { text: '> Navigating to Coding Velocity...', color: '#00ff88' },
         ]);
         setTimeout(() => {
           setIsExecuting(false);
           onNavigate('activity');
+        }, 450);
+        break;
+
+      case 'credentials':
+      case 'certs':
+      case 'certifications':
+        setHistory((prev) => [
+          ...prev,
+          { text: '> loading authenticated credential registry...', color: '#8a99b3' },
+          { text: '> 09 verified credentials · Simplilearn, Forage, Google Cloud', color: '#3ec6ff' },
+          { text: '> Navigating to Credential Archive...', color: '#00ff88' },
+        ]);
+        setTimeout(() => {
+          setIsExecuting(false);
+          onNavigate('credentials');
         }, 450);
         break;
 
