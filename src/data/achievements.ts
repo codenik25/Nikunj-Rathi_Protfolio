@@ -28,7 +28,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     skills: ['Microsoft Excel', 'Data Analysis'],
     category: 'DATA',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D4D2DAQFGsZckNMUlGw/profile-treasury-image-shrink_800_800/B4DaAisIvKKMAM-/0/1787288390984?e=1790301600&v=beta&t=g0q_dDv3Yf19EdCZlkszazH53UFnhpsZK_wfHXcta2A',
+      'https://media.licdn.com/dms/image/v2/D4D2DAQFGsZckNMUlGw/profile-treasury-image-shrink_1280_1280/B4DaAisIvKKMAc-/0/1787288390984?e=1792400400&v=beta&t=6D-6yJ7sSSDC5W66Tho0NKdoliSN8xAyszMhgVO6AYo',
     featured: true,
   },
   {
