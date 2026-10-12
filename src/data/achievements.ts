@@ -42,7 +42,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     skills: ['Data Analytics', 'Business Intelligence', 'Data Simulation'],
     category: 'DATA',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQH3fvGqYNhVTQ/profile-treasury-image-shrink_800_800/B56Z01HEMqHoAY-/0/1774712538635?e=1790301600&v=beta&t=WfKpXJe-gwGfC9A6toWBIJwSX763dElH0GLxd-jFjXI',
+      'https://media.licdn.com/dms/image/v2/D562DAQH3fvGqYNhVTQ/profile-treasury-image-shrink_1920_1920/B56Z01HEMqHoAc-/0/1774712538655?e=1792404000&v=beta&t=ocGE3Xj8QxJtGbUvsULYTXjinyTTuy3rhMyxnUBhuSQ',
   },
   {
     id: 'gcp-engineering-2025',
@@ -69,7 +69,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     category: 'AI / ML',
     secondaryCategories: ['CLOUD'],
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQH6paThYMMK7g/profile-treasury-image-shrink_800_800/B56Z01Ibt.KcAY-/0/1774712897869?e=1790301600&v=beta&t=CZjVxldQBP6CcpJ05CF0eXbeorhVo4BOQkFfMh7PLas',
+      'https://media.licdn.com/dms/image/v2/D562DAQH6paThYMMK7g/profile-treasury-image-shrink_1280_1280/B56Z01Ibt.KcAQ-/0/1774712897853?e=1792404000&v=beta&t=7w7nt-JnnxONIiOjusKcyQ3PfkwOaWcGDWC5SGZx-n8',
   },
   {
     id: 'gcp-foundations-2025',
@@ -94,7 +94,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     skills: ['C++', 'C Programming'],
     category: 'SOFTWARE',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQGqxH4MTOn_kw/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1730867329848?e=1790301600&v=beta&t=IP9N-UrAH9couiiiA7h9fEpCG1O0v4kO2Grh1_7payk',
+      'https://media.licdn.com/dms/image/v2/D562DAQGqxH4MTOn_kw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1730867329845?e=1792404000&v=beta&t=cDryzqThArScpOayJ8k9iEijbNzSZVu1tNjmaBqMSM4',
   },
   {
     id: 'techsaksham-ai-2024',
@@ -107,7 +107,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     skills: ['Artificial Intelligence', 'Machine Learning', 'Python'],
     category: 'AI / ML',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQGk93jY7WK4hA/profile-treasury-image-shrink_8192_8192/B56ZWvFXMiGoAs-/0/1742399174187?e=1790301600&v=beta&t=oPT3kj_3JV4xuaVtC9fAZ9KMLnkE3HzHzg-DZq2EeJU',
+      'https://media.licdn.com/dms/image/v2/D562DAQGk93jY7WK4hA/profile-treasury-image-shrink_8192_8192/B56ZWvFXMiGoAs-/0/1742399174187?e=1792404000&v=beta&t=JKMwLdi6mtnjycnMGu4fAoPlCzbrdRHUApzS3FPjx-Q',
   },
   {
     id: 'ecell-iitb-2023',
@@ -119,7 +119,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     skills: ['Entrepreneurship', 'Venture Strategy', 'Product Prototyping'],
     category: 'ENTREPRENEURSHIP',
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQF7yNPyt7oQ5Q/profile-treasury-document-cover-images_1280/profile-treasury-document-cover-images_1280/0/1726241243459?e=1790301600&v=beta&t=b1Msq5BoaerPeLNh3-izvEZdcNWjKz6RGBg6aT2B_Io',
+      'https://media.licdn.com/dms/image/v2/D562DAQF7yNPyt7oQ5Q/profile-treasury-document-images_1280/profile-treasury-document-images_1280/1/1726241243393?e=1792627200&v=beta&t=T1kzeLgLuwRX-gTMazMxbcreG1i68hc9ipZ-SN1p_9g',
   },
   {
     id: 'sih-2023',
@@ -132,7 +132,7 @@ export const CERTIFICATIONS_DATA: Certification[] = [
     category: 'ENTREPRENEURSHIP',
     secondaryCategories: ['SOFTWARE'],
     imageUrl:
-      'https://media.licdn.com/dms/image/v2/D562DAQFnzVhONikFiQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1725457863646?e=1790301600&v=beta&t=ZQT-LDwjolG5cRH4eHIgpjj7HHhiduTrWMQymziX-ko',
+      'https://media.licdn.com/dms/image/v2/D562DAQFnzVhONikFiQ/profile-treasury-image-shrink_1280_1280/profile-treasury-image-shrink_1280_1280/0/1725457863640?e=1792404000&v=beta&t=44OClxMs880qYODEf9yA2oBfCcoU8I8lnvgvLY9yAJk',
   },
 ];
 
